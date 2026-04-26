@@ -9,12 +9,14 @@ function AlugaCreate() {
   const [loja, setLoja] = useState("");
   const [lojas, setLojas] = useState([]);
 
-  // 🔥 buscar lojas
+  
   useEffect(() => {
     const fetchLojas = async () => {
       try {
         const response = await api.get("/loja");
-        setLojas(response.data);
+
+        setLojas(response.data.lojas);
+
       } catch (error) {
         console.error("Erro ao buscar lojas:", error);
       }
@@ -22,6 +24,7 @@ function AlugaCreate() {
 
     fetchLojas();
   }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ function AlugaCreate() {
         cartao,
         numero,
         senha,
-        loja // 🔥 ID da loja
+        loja 
       });
 
       console.log("Resposta:", response.data);
@@ -95,7 +98,7 @@ function AlugaCreate() {
 
             {lojas.map((l) => (
               <option key={l._id} value={l._id}>
-                {l.nome} - {l.loja}
+                {l.nome}
               </option>
             ))}
           </select>

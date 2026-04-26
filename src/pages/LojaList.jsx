@@ -9,7 +9,10 @@ function LojaList() {
         const procurarLoja = async () => {
             try {
                 const resposta = await api.get("/loja");
-                setLoja(resposta.data);
+
+             
+                setLoja(resposta.data.lojas);
+
             } catch (error) {
                 console.error(error);
             }

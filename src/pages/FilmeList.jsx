@@ -5,22 +5,20 @@ import "../styles/list.css";
 function FilmeList() {
   const [filmes, setFilmes] = useState([]);
 
-
   useEffect(() => {
-    const buscarFilmes = async () => {
+   
+    const fetchFilmes = async () => {
       try {
-        const resposta = await api.get("/filme");
-
+        const resposta = await api.get("/filme"); 
         console.log("DADOS DA API:", resposta.data);
-
         setFilmes(resposta.data);
       } catch (error) {
         console.error("ERRO:", error.response?.data || error.message);
-      }}}
-      )
-    
+      }
+    };
 
- 
+    fetchFilmes(); 
+  }, []); 
   return (
     <div>
       <h1>Lista de Filmes</h1>

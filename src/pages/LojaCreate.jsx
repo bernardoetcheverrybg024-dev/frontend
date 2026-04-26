@@ -27,7 +27,7 @@ function LojaCreate() {
 
       alert("Loja criada com sucesso!");
 
-      navigate("/loja"); // volta pra lista
+      navigate("/loja");
 
     } catch (error) {
       console.error("Erro:", error.response?.data || error.message);

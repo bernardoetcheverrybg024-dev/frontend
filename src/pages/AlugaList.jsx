@@ -7,20 +7,19 @@ function UserList() {
     const [users, setUsers] = useState([]);
 
     const fetchUsers = async () => {
-        const response = await api.get("/alugar");
-        setUsers(response.data);
+        try {
+            const response = await api.get("/alugar");
+
+            
+            setUsers(response.data.alugas);
+
+        } catch (error) {
+            console.error("Erro ao buscar usuários:", error);
+        }
     };
 
     useEffect(() => {
-        const load = async () => {
-            try {
-                await fetchUsers();
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        load();
+        fetchUsers();
     }, []);
 
     const deleteUser = async (id) => {

@@ -51,7 +51,7 @@ function FilmeCreate() {
           />
         </div>
 
-        <div className="form-row"> {/* 🔥 corrigido */}
+        <div className="form-row"> {}
           <textarea
             placeholder="Digite a sinopse do filme"
             value={sinopse}
